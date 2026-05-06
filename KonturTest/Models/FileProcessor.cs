@@ -20,7 +20,6 @@ namespace KonturTest.Models
                 using (var reader = new BinaryReader(File.Open(inputPath, FileMode.Open)))
                 using (var writer = new StreamWriter(outputPath))
                 {
-                    List<Packet> packets = new();
                     long totalBytes = new FileInfo(inputPath).Length;
 
                     // запишем в файл заголовки
@@ -30,7 +29,6 @@ namespace KonturTest.Models
                     while (reader.BaseStream.Position < totalBytes)
                     {
                         Packet packet = ReadPacket(reader);
-                        packets.Add(packet);
 
                         // запись в файл
                         await WritePacket(writer, packet);
@@ -67,12 +65,13 @@ namespace KonturTest.Models
         
         private async Task WritePacket(StreamWriter writer, Packet packet)
         {
-            long averageChannel1 = packet.ChannelSums[0] / 60;
-            long averageChannel2 = packet.ChannelSums[1] / 60;
-            long averageChannel3 = packet.ChannelSums[2] / 60;
-            long averageChannel4 = packet.ChannelSums[3] / 60;
-            long averageChannel5 = packet.ChannelSums[4] / 60;
-            long averageChannel6 = packet.ChannelSums[5] / 60;
+            const int numberBlocksInPacket = 60;
+            long averageChannel1 = packet.ChannelSums[0] / numberBlocksInPacket;
+            long averageChannel2 = packet.ChannelSums[1] / numberBlocksInPacket;
+            long averageChannel3 = packet.ChannelSums[2] / numberBlocksInPacket;
+            long averageChannel4 = packet.ChannelSums[3] / numberBlocksInPacket;
+            long averageChannel5 = packet.ChannelSums[4] / numberBlocksInPacket;
+            long averageChannel6 = packet.ChannelSums[5] / numberBlocksInPacket;
 
             await writer.WriteLineAsync($"{packet.PacketNumber};{averageChannel1};{averageChannel2};{averageChannel3};{averageChannel4};{averageChannel5};{averageChannel6};");
         }
@@ -81,16 +80,6 @@ namespace KonturTest.Models
         {
             public uint PacketNumber { get; set; }
             public long[] ChannelSums { get; set; } = new long[6];
-        }
-
-        private class DataBlock
-        {
-            public int Channel1 { get; set; }
-            public int Channel2 { get; set; }
-            public int Channel3 { get; set; }
-            public int Channel4 { get; set; }
-            public int Channel5 { get; set; }
-            public int Channel6 { get; set; }
         }
     }
 }
