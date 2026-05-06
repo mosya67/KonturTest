@@ -45,11 +45,11 @@
 
                         <Label Content="DataFile:" Grid.Column="0" Grid.Row="0" Margin="0,2"/>
                         <Button Content="Открыть" Grid.Column="1" Grid.Row="0" Margin="5,2" Padding="10,2" Command="{Binding Module1.OpenDataCommand}"/>
-                        <TextBox Grid.Column="2" Grid.Row="0" Margin="5,2" Padding="2,5" RenderTransformOrigin="0.5,0.5" Text="{Binding Module1.DataFilePath, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Column="2" Grid.Row="0" Margin="5,2" Padding="2,5" Text="{Binding Module1.DataFilePath, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <Label Content="CsvFile:" Grid.Column="0" Grid.Row="1" Margin="0,2"/>
                         <Button Content="Открыть" Grid.Column="1" Grid.Row="1" Margin="5,2" Padding="10,2" Command="{Binding Module1.OpenCsvCommand}"/>
-                        <TextBox Grid.Column="2" Grid.Row="1" Margin="5,2" Padding="2,5" RenderTransformOrigin="0.5,0.5" Text="{Binding Module1.CsvFilePath, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Column="2" Grid.Row="1" Margin="5,2" Padding="2,5" Text="{Binding Module1.CsvFilePath, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid>
 
                     <Button Content="Запустить процесс" HorizontalAlignment="Stretch" Grid.Row="1" Margin="5,2" Padding="10,2" Command="{Binding Module1.StartCommand}" IsEnabled="{Binding Module1.IsButtonEnabled}"/>
@@ -80,11 +80,11 @@
 
                         <Label Content="DataFile:" Grid.Column="0" Grid.Row="0" Margin="0,2"/>
                         <Button Content="Открыть" Grid.Column="1" Grid.Row="0" Margin="5,2" Padding="10,2" Command="{Binding Module2.OpenDataCommand}"/>
-                        <TextBox Grid.Column="2" Grid.Row="0" Margin="5,2" Padding="2,5" RenderTransformOrigin="0.5,0.5" Text="{Binding Module2.DataFilePath, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Column="2" Grid.Row="0" Margin="5,2" Padding="2,5" Text="{Binding Module2.DataFilePath, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <Label Content="CsvFile:" Grid.Column="0" Grid.Row="1" Margin="0,2"/>
                         <Button Content="Открыть" Grid.Column="1" Grid.Row="1" Margin="5,2" Padding="10,2" Command="{Binding Module2.OpenCsvCommand}"/>
-                        <TextBox Grid.Column="2" Grid.Row="1" Margin="5,2" Padding="2,5" RenderTransformOrigin="0.5,0.5" Text="{Binding Module2.CsvFilePath, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Column="2" Grid.Row="1" Margin="5,2" Padding="2,5" Text="{Binding Module2.CsvFilePath, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid>
 
                     <Button Content="Запустить процесс" HorizontalAlignment="Stretch" Grid.Row="1" Margin="5,2" Padding="10,2" Command="{Binding Module2.StartCommand}" IsEnabled="{Binding Module2.IsButtonEnabled}"/>
